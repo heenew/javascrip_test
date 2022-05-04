@@ -1,19 +1,19 @@
 <template>
   <div>
-    <h2>Hello Composition API</h2>
+    <h2>Hello HTTP Request</h2>
+    <TodoList />
   </div>
-  <TestComponent />
 </template>
 
 <script>
-import TestComponent from "./components/composition/TestComponent";
+import TodoList from "./components/http/TodoList";
 export default {
   name: "App",
   data() {
     return {};
   },
   components: {
-    TestComponent,
+    TodoList,
   },
 };
 </script>
