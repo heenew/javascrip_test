@@ -2,7 +2,7 @@
   <el-container>
     <el-header><BasicHeader /></el-header>
     <el-container>
-      <el-aside width="200px">Aside</el-aside>
+      <el-aside width="200px"><SideMenu /></el-aside>
       <el-container>
         <el-main>Main</el-main>
       </el-container>
@@ -12,10 +12,12 @@
 
 <script>
 import BasicHeader from "./BasicHeader";
+import SideMenu from "./SideMenu"
 export default {
   name: "basicLayout",
   components: {
     BasicHeader,
+    SideMenu
   },
 };
 </script>
