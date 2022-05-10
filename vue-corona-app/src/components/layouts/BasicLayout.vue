@@ -1,10 +1,19 @@
 <template>
-  <el-container>
+  <el-container class="main">
     <el-header><BasicHeader /></el-header>
     <el-container>
-      <el-aside width="200px"><SideMenu /></el-aside>
+      <el-aside width="menuWidth">
+        <!-- menuSelec이벤트가 발생하면 item을 App.vue에 다시 전달 -->
+        <SideMenu
+          :isCollapse="isCollapse"
+          @menuSelect="
+            (item) => {
+              $emit('menuSelect', item);
+            }
+          "
+      /></el-aside>
       <el-container>
-        <el-main>Main</el-main>
+        <el-main><slot></slot></el-main>
       </el-container>
     </el-container>
   </el-container>
@@ -12,12 +21,22 @@
 
 <script>
 import BasicHeader from "./BasicHeader";
-import SideMenu from "./SideMenu"
+import SideMenu from "./SideMenu";
+import useBreakpoint from "@/composables/useBreakpoint";
+import { computed } from "vue";
 export default {
   name: "basicLayout",
   components: {
     BasicHeader,
-    SideMenu
+    SideMenu,
+  },
+  setup() {
+    const { type } = useBreakpoint();
+    const isCollapse = computed(() => type.value === "sm");
+    // container의 넓이를 가변적으로 주기 위함
+    const menuWidth = computed(() => (isCollapse.value ? "65px" : "200px"));
+
+    return { isCollapse, menuWidth };
   },
 };
 </script>
@@ -27,6 +46,9 @@ export default {
   background: #409eff;
   color: #fff;
   display: flex;
-  align-content: center;
+  align-items: center;
+}
+.main {
+  height: 100%;
 }
 </style>

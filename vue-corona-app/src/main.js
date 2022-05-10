@@ -5,6 +5,9 @@ import App from "./App.vue";
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 
+// global css
+import "@/styles/main.css";
+
 //createApp(App).mount("#app");에 use를 바로 쓰기엔 부담스러움으로 분리
 const app = createApp(App);
 
