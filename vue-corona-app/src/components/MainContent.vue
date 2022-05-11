@@ -1,7 +1,6 @@
 <template>
   <h2 class="content-title">{{ content.label }}</h2>
   <!-- content.label이 바뀌면 그에 맞게 내용도 바뀜 -->
-  <!-- <component :is="targetComponent"></component> -->
   <component :is="targetComponent"></component>
 </template>
 
